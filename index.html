@@ -1,8 +1,20 @@
 <html>
-  <head>
-    <title>Tom's GitHub Page</title>
-  </head>
-  <body>
-    This is a placeholder for my GitHub profile. My main site is located at <a href="https://www.toms-world.org">https://www.toms-world.org</a>.
-  </body>
+<head>
+	<title>Tom's GitHub Page</title>
+	<script>
+		setInterval(function() {
+			var div = document.querySelector("#counter");
+			var count = div.textContent * 1 - 1;
+
+			if (count > -1) {
+				div.textContent = count;
+				if (count <= 0) window.location.replace("https://www.toms-world.org");
+			}
+		}, 1000);
+	</script>
+</head>
+	<body>
+		<h1>This is a placeholder for my GitHub profile. My main site is located at <a href="https://www.toms-world.org">https://www.toms-world.org</a></h1>
+		<h2>Redirecting in... <span id="counter">20</span> seconds.</h2>
+	</body>
 </html>
