@@ -2,19 +2,31 @@
 <head>
 	<title>Tom's GitHub Page</title>
 	<script>
-		setInterval(function() {
-			var div = document.querySelector("#counter");
-			var count = div.textContent * 1 - 1;
+		document.addEventListener("DOMContentLoaded", function() {
+			const div = document.querySelector("#counterNumber");
+			const counterWord = document.querySelector("#counterWord");
 
-			if (count > -1) {
-				div.textContent = count;
-				if (count <= 0) window.location.replace("https://www.toms-world.org");
-			}
-		}, 1000);
+			const intervalId = setInterval(function() {
+				let count = parseInt(div.textContent, 10) - 1;
+
+				// Update the word based on count
+				counterWord.textContent = count === 1 ? "second" : "seconds";
+
+				if (count >= 0) {
+					div.textContent = count;
+				}
+
+				// Once countdown hits zero, redirect and clear the interval
+				if (count <= 0) {
+					window.location.replace("https://www.toms-world.org/blog/");
+					clearInterval(intervalId);
+				}
+			}, 1000);
+		});
 	</script>
 </head>
 	<body>
-		<h1>This is a placeholder for my GitHub profile. My main site is located at <a href="https://www.toms-world.org">https://www.toms-world.org</a>.</h1>
-		<h2>Redirecting in... <span id="counter">20</span> seconds.</h2>
+		<h1>This is a placeholder for my GitHub profile. My main site is located at <a href="https://www.toms-world.org/blog/">https://www.toms-world.org/blog/</a>.</h1>
+		<h2>Redirecting in... <span id="counterNumber">20</span> <span id="counterWord">seconds</span>.</h2>
 	</body>
 </html>
